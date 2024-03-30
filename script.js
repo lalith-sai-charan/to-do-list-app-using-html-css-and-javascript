@@ -1,23 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 
+
+
+
     // Get tasks from local storage or initialize an empty array
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 
-    const addTaskBtn = document.getElementById("add-task");
-    const taskInput = document.getElementById("task-input");
-    const errorMsg = document.getElementById("error-msg");
-    const itemsContainer = document.getElementById("items");
+
+
 
     // Initialize task ID counter based on the number of tasks
     let taskIdCounter = tasks.length > 0 ? tasks.length + 1 : 1;
 
 
 
+
+    
+    const addTaskBtn = document.getElementById("add-task");
+    const taskInput = document.getElementById("task-input");
+    const errorMsg = document.getElementById("error-msg");
+    const itemsContainer = document.getElementById("items");
+
+    
+
+
+
     // code to add new task when the add task button is clicked
 
     addTaskBtn.addEventListener("click", function () {
+
+
+        
 
         const taskName = taskInput.value.trim(); // Remove leading/trailing whitespace
 
@@ -99,9 +114,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+    // code for checking task status if completed it will be striked off , or else not 
+
+    document.addEventListener('change', function (event) {
+        if (event.target.classList.contains('task-status')) {
+            let checkbox = event.target;
+            let label = checkbox.nextElementSibling.querySelector('span');
+            let taskId = parseInt(checkbox.id.replace('task-status-', ''));
+
+            // Update task status in local storage
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            let taskToUpdate = tasks.find(task => task.id === taskId);
+            if (taskToUpdate) {
+                taskToUpdate.status = checkbox.checked;
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            }
+
+            // Update task appearance based on status
+            if (checkbox.checked) {
+                label.style.textDecoration = 'line-through'; // Apply strikethrough when checked
+            } else {
+                label.style.textDecoration = 'none'; // Remove strikethrough when unchecked
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
     // click event listener 
 
     document.addEventListener('click', function (event) {
+
+
+
 
 
         // checking the event is for editing task name 
@@ -144,6 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
         // code for deleting tassk
 
         if (event.target.classList.contains('fa-xmark')) {
@@ -164,6 +221,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
+    
 
     // Add keypress event listener to handle Enter key press
     document.addEventListener('keypress', function (event) {
@@ -187,30 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // code for checking task status if completed it will be striked off , or else not 
-
-    document.addEventListener('change', function (event) {
-        if (event.target.classList.contains('task-status')) {
-            let checkbox = event.target;
-            let label = checkbox.nextElementSibling.querySelector('span');
-            let taskId = parseInt(checkbox.id.replace('task-status-', ''));
-
-            // Update task status in local storage
-            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-            let taskToUpdate = tasks.find(task => task.id === taskId);
-            if (taskToUpdate) {
-                taskToUpdate.status = checkbox.checked;
-                localStorage.setItem('tasks', JSON.stringify(tasks));
-            }
-
-            // Update task appearance based on status
-            if (checkbox.checked) {
-                label.style.textDecoration = 'line-through'; // Apply strikethrough when checked
-            } else {
-                label.style.textDecoration = 'none'; // Remove strikethrough when unchecked
-            }
-        }
-    });
+    
 
 
 

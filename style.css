@@ -1,9 +1,20 @@
+/* reset everything */
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Kumbh Sans", sans-serif;
 }
+
+
+
+
+
+
+/*  set color for body and centerning body content */
+
 
 body {
     height: 100vh;
@@ -15,7 +26,11 @@ body {
 }
 
 
-/*  outer container */
+
+
+
+/*  styling the outer container */
+
 
 .outer-container {
     background-color: #F7F7F8;
@@ -27,13 +42,25 @@ body {
     margin-top: 64px;
 }
 
-/*  heading */
+
+
+
+
+/* styling heading in outer container */
+
 
 .outer-container h1 {
     font-size: 40px;
     color: #333333;
     font-weight: 600;
 }
+
+
+
+
+
+/*  styling error message box to show error message */
+
 
 #error-msg{
     font-size: 18px;
@@ -42,7 +69,12 @@ body {
     height: 30px;
     width: 500px;
 }
-/*  input and button styling  */
+
+
+
+
+
+/*  styling the input group */
 
 
 .text-input-group{
@@ -50,6 +82,13 @@ body {
     display: flex;
     gap: 8px;
 }
+
+
+
+
+
+/*  styling input type text  */
+
 
 .task-input{
     color: #595959;
@@ -61,6 +100,13 @@ body {
     border: 2px solid #B3B3B3;
     padding: 16px;
 }
+
+
+
+
+
+/* styling add task button */
+
 
 .add-task-btn{
     font-size: 16px;
@@ -78,7 +124,11 @@ body {
     transform: scale(0.96);
 }
 
-/*  task item styling  */
+
+
+
+
+/* styling task item  */
 
 
 .task-item{
@@ -88,6 +138,41 @@ body {
     padding: 16px 16px;
     position: relative;
 }
+
+
+
+
+
+/* styling input checkbox   */
+
+
+.task-item input[type='checkbox'] {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+
+
+
+
+/*  styling label before  */
+
+
+.task-item label::before{
+    content: '';
+    height: 18px;
+    width: 18px;
+    border: 1px solid #333333;
+    border-radius: 50%;
+}
+
+
+
+
+
+/*  styling label  */
+
 
 .task-item label{
     user-select: none;
@@ -99,11 +184,26 @@ body {
     gap: 16px;
 }
 
+
+
+
+
+
+/*  styling when task name is editable  */
+
+
 .task-name[contenteditable="true"] {
     border-radius: 0.1px;
     outline: 2px solid #B3B3B3; 
     outline-offset: 8px; 
 }
+
+
+
+
+
+/*  styling edit icon  */
+
 
 .task-item .fa-pen{
     margin-right: 18px;
@@ -111,24 +211,23 @@ body {
     font-size: 14px;
 }
 
+
+
+
+
+/*  styling delete icon  */
+
+
 .task-item .fa-xmark{
     color: #333333;
     font-size: 20px;
 }
 
-.task-item input[type='checkbox'] {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-}
 
-.task-item label::before{
-    content: '';
-    height: 18px;
-    width: 18px;
-    border: 1px solid #333333;
-    border-radius: 50%;
-}
+
+
+/* styling label before to work like real checkbox  */
+
 
 .task-item input[type='checkbox']:checked + label::before{
     font-family: "Font Awesome 5 Free";
